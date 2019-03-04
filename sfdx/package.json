@@ -58,7 +58,6 @@
         "commands": "./oclif"
     },
     "scripts": {
-        "prepare": "oclif-dev manifest",
-        "clean": "node scripts/clean.js"
+        "prepare": "node_modules/.bin/oclif-dev manifest"
     }
 }
