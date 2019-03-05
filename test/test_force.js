@@ -269,9 +269,13 @@ function createDeploySfdxPluginPackage(tmpDir) {
     var oclifManifestPath = path.join(__dirname, '..', 'sfdx', 'oclif.manifest.json');
     var mobileSdkTmpPath = path.join(tmpDir, 'node_modules', 'sfdx-mobilesdk-plugin');
 
+    utils.runProcessThrowError(`ls ${oclifManifestPath}`);
+
+    console.log(`Copying file: ${oclifManifestPath} to ${mobileSdkTmpPath}`);
+
     // Gotta copy the oclif manifest to the target link folder.
-    utils.runProcessCatchError(`cp ${oclifManifestPath} ${mobileSdkTmpPath}`);
-    utils.runProcessCatchError('sfdx plugins:link ' + tmpDir + '/node_modules/sfdx-mobilesdk-plugin');
+    utils.runProcessThrowError(`cp ${oclifManifestPath} ${mobileSdkTmpPath}`);
+    utils.runProcessThrowError('sfdx plugins:link ' + tmpDir + '/node_modules/sfdx-mobilesdk-plugin');
     console.log('-- Finished plugins link --');
 }
 
